@@ -1,36 +1,46 @@
-@import "extras/extras";
-
 /*!
  * Theme Name: Minimo
  * Author: Munif Tanjim
  */
 
-/*****************
- 0. Normalize
-*****************/
-@import "normalize";
+@import 'extras/extras';
 
 /*****************
- 1. Typography
+ # Normalize
 *****************/
-@import "typography/typography";
+@import '../../node_modules/normalize.css/normalize.css';
 
 /*****************
- 2. Elements
+ # Typography
 *****************/
-@import "elements/elements";
+@import 'typography/typography';
 
 /*****************
- 3. Navigation
+ # Elements
 *****************/
-@import "navigation/navigation";
+@import 'elements/elements';
 
 /*****************
- 4. Layout
+ # Forms
 *****************/
-@import "layout/layout";
+@import 'forms/forms';
 
 /*****************
- 5. Site Blocks
+ # Navigation
 *****************/
-@import "site/site";
+@import 'navigation/navigation';
+
+/*****************
+ # Layouts
+*****************/
+@import 'layouts/layouts';
+
+/*****************
+ # Accessibility
+*****************/
+@import 'extras/accessibility';
+
+/*****************
+ # Hugo Specific
+*****************/
+@import 'hugo/hugo';

@@ -1,8 +1,18 @@
-{{ with .Site.Params.CopyrightStartYear }}
-  {{ if lt ( int . ) now.Year }}
-    {{ $.Scratch.Set "copyrightStartYear" . }}
-  {{ end }}
-{{ end }}
-<p>
-  &copy; {{ with $.Scratch.Get "copyrightStartYear" }}{{ . }}-{{ end }}{{ now.Year }} {{ or .Site.Params.CopyrightOwner ( or .Site.Author.name .Site.Title ) }}
-</p>
+<div class='copyright'>
+  <p>
+  {{- with .Site.Copyright -}}
+    {{ . }}
+  {{- else -}}
+    {{- with .Site.Params.copyright -}}
+
+      {{- with .startyear -}}
+        {{- if lt ( int . ) now.Year -}}
+          {{- $.Scratch.Set "copyrightStartYear" . -}}
+        {{- end -}}
+      {{- end -}}
+
+      {{ .prefix | markdownify }} &copy; {{ with ( $.Scratch.Get "copyrightStartYear" ) }}{{ . }}-{{ end }}{{ now.Year }} {{ or .holder $.Site.Title | markdownify }} {{ .suffix | markdownify }}
+    {{- end -}}
+  {{- end -}}
+  </p>
+</div>

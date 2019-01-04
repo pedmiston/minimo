@@ -1,15 +1,23 @@
-<nav id='navmenu'>
-  <ul class='main-menu'>
-    {{ range .Site.Menus.main }}
-    <li>
-      <a href='{{ .URL }}' class='
-        {{- if or ( $.IsMenuCurrent "main" . ) ( $.HasMenuCurrent "main" . ) -}}
-          current
-        {{- end -}}
-      '>
-        {{- .Name -}}
-      </a>
-    </li>
-    {{ end }}
-  </ul>
+{{- if not .Site.Params.settings.hideMainMenu -}}
+
+<nav id='main-menu' class='menu main-menu' aria-label='{{ i18n "mainMenu" }}'>
+  <div class='container'>
+    {{ partial "sidebar/toggler" . }}
+    <ul>
+    {{- range .Site.Menus.main -}}
+      {{- $isCurrent := ( or ( $.IsMenuCurrent "main" . ) ( $.HasMenuCurrent "main" . ) ) -}}
+      <li class='item {{- if $isCurrent }} current {{- end -}}'>
+        <a {{ if $isCurrent -}} aria-current='page' {{ end -}} href='{{ .URL }}'>
+          {{- .Name -}}
+        </a>
+      </li>
+    {{- end -}}
+    </ul>
+  </div>
 </nav>
+
+{{- else -}}
+
+{{ partial "sidebar/toggler" . }}
+
+{{- end -}}

@@ -1,18 +1,17 @@
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social'>
-          {{ partial "nav/menus/social.html" . }}
-        </div>
+      </main>
 
-        <div class='copyright'>
-          {{ partial "footer/copyright.html" . }}
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'>
+          {{- $footerWidgets := .Site.Params.widgets.footer -}}
+          {{- partial "extras/widget_area" ( dict "Widgets" $footerWidgets "Scope" . ) -}}
+          {{ partial "footer/copyright" . }}
         </div>
-      </div>
-    </footer>
+      </footer>
 
+    </div>
   </div>
 
-  <script src='{{  "js/main.js" | relURL }}'></script>
+  {{- partial "footer/scripts" . -}}
 
 </body>
 

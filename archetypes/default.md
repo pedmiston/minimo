@@ -1,4 +1,10 @@
 ---
+date: "{{ .Date }}"
+title: "{{ replace .TranslationBaseName '-' ' ' | title }}"
+authors: []
 categories:
-  - Others
+  -
+tags:
+  -
+draft: true
 ---

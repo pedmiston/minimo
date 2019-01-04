@@ -1,6 +1,3 @@
-// Variables
-@import "variables";
+@import 'variables/variables';
 
-@mixin font-size($size) {
-  font-size: #{$size}em;
-}
+@import 'mixins/mixins';

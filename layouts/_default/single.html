@@ -1,13 +1,13 @@
-{{ partial "header.html" . }}
+{{ partial "header" . }}
 
-<main class='main'>
-  <article class='single'>
-    {{ partial "single/header.html" . }}
-    <div class='single-content'>
-      {{ .Content }}
-    </div>
-    {{ partial "single/footer.html" . }}
-  </article>
-</main>
+<article lang='{{ .Params.lang | default .Lang }}' class='entry'>
+  {{ partial "entry/header" . }}
+  {{ partial "entry/cover" . }}
+  {{ partial "entry/toc" . }}
+  {{ partial "entry/content" . }}
+  {{ partial "entry/footer" . }}
+</article>
+{{ partial "nav/entry_nav" . }}
+{{ partial "entry/comments" . }}
 
-{{ partial "footer.html" . }}
+{{ partial "footer" . }}

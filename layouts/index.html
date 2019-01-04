@@ -1,14 +1,19 @@
-{{ partial "header.html" . }}
+{{ partial "header" . }}
 
-<main class='main'>
-  <section id='list' class='list-container'>
-    <h2 class='list-title title'>{{ i18n "recentPosts" }}</h2>
-    <div class='list'>
-      {{ range ( first 5 ( where .Data.Pages "Section" "ne" "page" ) ) }}
-        {{ .Render "li" }}
-      {{ end }}
-    </div>
-  </section>
-</main>
+{{ if .Content }}
+<div class='entry'>
+  {{ partial "entry/cover" . }}
+  {{ partial "entry/content" . }}
+</div>
+{{ end }}
 
-{{ partial "footer.html" . }}
+{{- $homepageWidgets := .Site.Params.widgets.homepage -}}
+{{- if $homepageWidgets -}}
+<div class='home-widgets'>
+  <div class='container sep-before'>
+    {{- partial "extras/widget_area" ( dict "Widgets" $homepageWidgets "Scope" . ) -}}
+  </div>
+</div>
+{{- end -}}
+
+{{ partial "footer" . }}

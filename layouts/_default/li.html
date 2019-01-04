@@ -1,16 +1,12 @@
-<article class='list-item'>
+<li class='item'>
   <div class='meta'>
-    <span>
-      <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-        {{- .Date.Format "2006, Jan 02" -}}
-      </time>
-    </span>
+    {{ partial "list/date" . }}
   </div>
-  <header class='list-item-header'>
-    <h3 class='list-item-title'>
-      <a href='{{ .Permalink }}'>
+  <header class='item-header'>
+    <h3 class='item-title'>
+      <a href='{{ .Permalink | relURL }}'>
         {{- .Title -}}
       </a>
     </h3>
   </header>
-</article>
+</li>
